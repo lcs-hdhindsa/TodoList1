@@ -28,6 +28,16 @@ struct LandingView: View {
                     List(todos) { todo in
                         
                         ItemView(currentItem: todo)
+                        // Delete a to-do item
+                            .swipeActions {
+                                Button(
+                                    "Delete",
+                                    role: .destructive,
+                                    action: {
+                                        delete(todo)
+                                    }
+                                )
+                            }
                     }
                 }
                 .searchable(text: $searchText)
@@ -61,6 +71,14 @@ func createToDo(withTitle title: String) {
     todos.append(todo)
     
    }
+    
+    func delete(_ todo: TodoItem) {
+        
+        // Remove the provided to-do item from the array
+        todos.removeAll{
+            currentItem in currentItem.id == todo.id
+        }
+    }
 }
 #Preview {
     LandingView()
