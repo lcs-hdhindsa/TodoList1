@@ -27,7 +27,7 @@ struct LandingView: View {
                 VStack {
                     List($todos) { $todo in
                         
-                        ItemView(currentItem: todo)
+                    ItemView(currentItem: $todo)
                         // Delete a to-do item
                             .swipeActions {
                                 Button(
