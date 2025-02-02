@@ -16,7 +16,7 @@ struct ItemView: View {
             title: {
                 TextField("Enter a to-do item", text: $currentItem.title, axis: .vertical)
             }, icon: {
-                Image(systemName: currentItem.done == true ? "checkmark.circle" : "circle")
+                Image(systemName: currentItem.done ? "checkmark.circle" : "circle")
                     // Tap to mark as done
                     .onTapGesture {
                         currentItem.done.toggle()
@@ -28,7 +28,7 @@ struct ItemView: View {
 
 //#Preview {
  //   List {
- //       ItemView(currentItem: Binding.constant(firstItem))
- //       ItemView(currentItem: Binding.constant(secondItem))
-  
-
+   //     ItemView(currentItem: Binding.constant(firstItem))
+   //    ItemView(currentItem: Binding.constant(secondItem))
+  //  }
+// }

@@ -20,25 +20,20 @@ struct LandingView: View {
     // Access the model context (required to do additions, deletions, updates, et cetera)
     @Environment(\.modelContext) var modelContext
     
-    //The list of to-do items
+    // The list of to-do items
     @Query var todos: [TodoItem]
     
-   // MARK: Computed properties
+    // MARK: Computed properties
     var body: some View {
         NavigationView {
             VStack {
-                VStack {
-                    
-                    List {
-                        ForEach(todos) { todo in
-                            
-                            ItemView(currentItem: todo)
-                     
-                        }
-                        .onDelete(perform: removeRows)
+                List {
+                    ForEach(todos) { todo in
+                        ItemView(currentItem: todo)
                     }
-                    .searchable(text: $searchText)
-                
+                    .onDelete(perform: removeRows)
+                }
+                .searchable(text: $searchText)
                 
                 HStack {
                     TextField("Enter a to-do item", text: $newItemDescription)
@@ -48,18 +43,19 @@ struct LandingView: View {
                         createToDo(withTitle: newItemDescription)
                     }
                     .font(.caption)
-                    .disabled(newItemDescription.isEmpty == true)
+                    .disabled(newItemDescription.isEmpty)
                 }
                 .padding(20)
             }
             .navigationTitle("To do")
+            .onAppear {
+                printCommandToOpenDatabaseFile()
+            }
         }
     }
     
-    // MARK: functions
-    
+    // MARK: Functions
     func createToDo(withTitle title: String) {
-        
         // Create the new to-do item instance
         let todo = TodoItem(
             title: title,
@@ -70,7 +66,6 @@ struct LandingView: View {
     }
     
     func removeRows(at offsets: IndexSet) {
-        
         // Accept the offset within the list
         // (the position of the item being deleted)
         //
@@ -80,10 +75,7 @@ struct LandingView: View {
             modelContext.delete(todos[offset])
         }
     }
+  }
+#Preview {
+LandingView()
 }
-//#Preview {
- //   LandingView()
-
-
-
-
