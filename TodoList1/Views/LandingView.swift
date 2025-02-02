@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct LandingView: View {
-
+    
     // MARK: Stored properties
-
+    
     // The item currently being added
     @State var newItemDescription = ""
-
+    
     // The search text
     @State var searchText = ""
-
+    
     //The list of to-do items
     @State var todos: [TodoItem] = exampleItems
     
@@ -27,7 +27,7 @@ struct LandingView: View {
                 VStack {
                     List($todos) { $todo in
                         
-                    ItemView(currentItem: $todo)
+                        ItemView(currentItem: $todo)
                         // Delete a to-do item
                             .swipeActions {
                                 Button(
@@ -45,11 +45,11 @@ struct LandingView: View {
                     }
                 }
                 .searchable(text: $searchText)
-
-
+                
+                
                 HStack {
                     TextField("Enter a to-do item", text: $newItemDescription)
-
+                    
                     Button("ADD") {
                         // Add the new to-do item
                         createToDo(withTitle: newItemDescription)
@@ -62,19 +62,19 @@ struct LandingView: View {
             .navigationTitle("To do")
         }
     }
-
+    
     // MARK: functions
-func createToDo(withTitle title: String) {
-    
-    // Create the new to-do item instance
-    let todo = TodoItem(
-        title: title, done: false
-    )
-    
-    // Append to the array
-    todos.append(todo)
-    
-   }
+    func createToDo(withTitle title: String) {
+        
+        // Create the new to-do item instance
+        let todo = TodoItem(
+            title: title, done: false
+        )
+        
+        // Append to the array
+        todos.append(todo)
+        
+    }
     
     func delete(_ todo: TodoItem) {
         

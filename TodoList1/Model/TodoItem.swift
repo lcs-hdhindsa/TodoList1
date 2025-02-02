@@ -8,7 +8,7 @@
 import SwiftData
 
 @Model
-class TooloItem: Identifiable {
+class TodoItem: Identifiable {
     var title: String
     var done: Bool
 
@@ -18,11 +18,11 @@ class TooloItem: Identifiable {
     }
 }
 
-let firstItem = TooloItem(title: "Study for Chemistry quiz", done: false)
+let firstItem = TodoItem(title: "Study for Chemistry quiz", done: false)
 
-let secondItem = TooloItem(title: "Finish Computer Science assignment", done: true)
+let secondItem = TodoItem(title: "Finish Computer Science assignment", done: true)
 
-let thirdItem = TooloItem(title: "Go for a run around campus", done: false)
+let thirdItem = TodoItem(title: "Go for a run around campus", done: false)
 
 let exampleItems = [
     firstItem,
