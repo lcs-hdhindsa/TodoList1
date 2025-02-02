@@ -5,27 +5,27 @@
 //  Created by Harshan Dhindsa on 2025-02-01.
 //
 
-import Foundation
+import SwiftData
 
-struct TodoItem: Identifiable {
-    let id = UUID()
+@Model
+class TooloItem: Identifiable {
     var title: String
     var done: Bool
+
+    init(title: String, done: Bool) {
+        self.title = title
+        self.done = done
+    }
 }
 
-let firstItem = TodoItem(title: "Study for Chemistry quiz", done: false)
+let firstItem = TooloItem(title: "Study for Chemistry quiz", done: false)
 
-let secondItem = TodoItem(title: "finish Computer Science assignment", done: true)
+let secondItem = TooloItem(title: "Finish Computer Science assignment", done: true)
 
-let thirdItem = TodoItem(title: "Go for a run around campus", done: false)
-
+let thirdItem = TooloItem(title: "Go for a run around campus", done: false)
 
 let exampleItems = [
-    
-    firstItem
-    ,
-    secondItem
-    ,
+    firstItem,
+    secondItem,
     thirdItem
-    ,
 ]
