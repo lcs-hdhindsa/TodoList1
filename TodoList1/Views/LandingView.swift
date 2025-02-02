@@ -4,7 +4,7 @@
 //
 //  Created by Harshan Dhindsa on 2025-02-01.
 //
-
+import SwiftData
 import SwiftUI
 
 struct LandingView: View {
@@ -19,6 +19,9 @@ struct LandingView: View {
     
     //The list of to-do items
     @State var todos: [TodoItem] = exampleItems
+    
+    // Access the model context (required to do additions, deletions, updates, et cetera)
+    @Environment(\.modelContext) var modelContext
     
     // MARK: Computed properties
     var body: some View {
